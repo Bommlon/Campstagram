@@ -2,6 +2,12 @@
 $targetDir = "pictures/";
 $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
 
+ // create new directory with 744 permissions if it does not exist yet
+ // owner will be the user/group the PHP script is run under
+ if ( !file_exists($targetDir) ) {
+	mkdir ($targetDir, 0744);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
 	$file = $_FILES['image'];
 	$description = $_POST['description'] ?? 'image';
