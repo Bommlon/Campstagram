@@ -76,7 +76,7 @@
 			</div>
 
 			<div id="form-input">
-				<input type="file" name="image" required>
+				<input type="file" name="image" accept="image/*" required>
 				<input type="text" name="description" maxlength="200" placeholder="describe your awesome picture"
 					required>
 			</div>
