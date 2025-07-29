@@ -5,6 +5,10 @@ $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
 	$file = $_FILES['image'];
 	$description = $_POST['description'] ?? 'image';
+	// cap description at 220 characters
+	if(strlen($description) > 220) {
+		$description = substr($description, 0, 220);
+	}
 
 	$mime = mime_content_type($file['tmp_name']);
 	if (in_array($mime, $allowedTypes) && $file['error'] === 0) {
