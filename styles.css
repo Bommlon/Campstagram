@@ -5,7 +5,7 @@
 	--color3: rgb(176, 59, 191);
 	--color4: rgb(82, 52, 191);
 	--color5: rgb(242, 69, 53);
-	font-size: 4vw;
+	font-size: clamp(10px, 4vw, 40px);
 
 }
 
@@ -161,6 +161,7 @@ img {
 	font-size: 1rem;
 	max-width: 80vw;
 	justify-self: left;
+	overflow-wrap: break-word;
 }
 
 #pic_list {
