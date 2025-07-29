@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
 
 		// Ensure filename is unique by adding current timestamp
 		$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-		$filename = $desc . '_' . time() . '.' . $ext;
+		$filename = time() . '_' . $desc . '.' . $ext;
 
 		$targetFile = $targetDir . $filename;
 		move_uploaded_file($file['tmp_name'], $targetFile);

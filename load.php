@@ -8,7 +8,8 @@ $folder = 'pictures';
 $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
 $images = glob($folder . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-shuffle($images);
+//shuffle($images);
+rsort($images);
 
 $perPage = 20;
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
@@ -19,7 +20,8 @@ foreach ($imagesToShow as $image) {
 	$name = basename($image);
 
 	// Clean filename into description
-	$text = preg_replace('/_[0-9]{10}(?=\.(jpg|jpeg|png|gif))/i', '', $name);	// remove timestamp (10 digit number just before file extension)
+	$text = substr($name, 10);	// cuts first 10 characters (timestamp)
+	//$text = preg_replace('/_[0-9]{10}(?=\.(jpg|jpeg|png|gif))/i', '', $name);	// remove timestamp (10 digit number just before file extension)
 	$text = preg_replace('/\.(jpg|jpeg|png|gif)$/i', '', $text);	// remove file extension
 	$text = str_replace('_', ' ', $text);	// replace _ with space
 

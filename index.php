@@ -98,7 +98,8 @@
 		// initial loading of 20 images
 		$folder = 'pictures';
 		$images = glob($folder . '/*{jpg,jpeg,png,gif}', GLOB_BRACE);
-		shuffle($images);	// give them a good shake
+		//shuffle($images);	// give them a good shake
+		rsort($images);	// show newest first
 		
 		$total = count($images);
 		$perPage = 20;
@@ -109,7 +110,8 @@
 
 		foreach ($imagesToShow as $image) {
 			$name = basename($image);
-			$text = preg_replace('/_[0-9]{10}(?=\.(jpg|jpeg|png|gif))/i', '', $name);	// remove timestamp (10 digit number just before file extension)
+			$text = substr($name, 10);	// cuts first 10 characters (timestamp)
+			//$text = preg_replace('/_[0-9]{10}(?=\.(jpg|jpeg|png|gif))/i', '', $name);	// remove timestamp (10 digit number just before file extension)
 			$text = preg_replace('/\.(jpg|jpeg|png|gif)$/i', '', $text);	// remove file extension
 			$text = str_replace('_', ' ', $text);	// replace _ with space
 			echo "
