@@ -1,4 +1,9 @@
 <?php
+// create pictures folder if none exists
+if (!file_exists('pictures')) {
+        mkdir('pictures', 0777, true);
+}
+
 $targetDir = "pictures/";
 $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
 
@@ -28,3 +33,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
 header('Location: index.php');
 exit;
 ?>
+
