@@ -7,11 +7,9 @@ The description gets saved as the pictures's name and all the pictures are store
 
 ## Setup
 1. install apache2 and php (try [this tutorial](https://gist.github.com/QasimTalkin/9c727739653ceab0f50156548d94a833#change-directory-to-public-html-and-grant-ownership-to-pi-user))
-3. go to /var/www
-4. clone the repo
-5. open /etc/apache2/sites-available/000-default.conf
-6. set "DocumentRoot" to "/var/www/Campstagram"
-7. create the /var/www/html/pictures directory (this is where the uploaded pictures get stored)
-8. restart apache
-9. create the 
-10. give ownership to the php user so that upload.php can write to the pictures directory (have a look at [this](https://stackoverflow.com/questions/2900690/how-do-i-give-php-write-access-to-a-directory))
+2. go to `/var/www`
+3. clone the repo
+4. open `/etc/apache2/sites-available/000-default.conf`
+5. set `DocumentRoot` to `/var/www/Campstagram`
+6. restart apache
+7. run `sudo chown -R www-data:www-data /var/www/Campstagram` to make sure upload.php can create and write to the pictures directory
